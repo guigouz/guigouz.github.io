@@ -4,8 +4,9 @@ Skeleton was built using the Metaproject Generator. The installation
 instructions for the generator and its dependencies are listed on
 https://github.com/bravado/generator-metaproject
 
-To get started, run
- `yo metaproject` on your project's directory, in this case, `skeleton`
+To get started, run `yo metaproject` on your project's root, in this 
+case, we'll create a new project named `skeleton`, preferably in our
+local web root.
 
     mkdir skeleton
     cd skeleton
@@ -36,50 +37,6 @@ If you don't have a local webserver to export the application, run
 
 to export the current directory on port 8080, then visit 
 http://localhost:8080/app/index.html on your browser of choice.
-
-## Application Structure
-
-    skeleton/
-        `- app/
-            `- core/
-            `- modules/
-              `- base/
-              `- AdminLTE/
-              `- products/
-              `- index.js
-              `- models.js
-            `- main.js
-            `- script.js
-            `- style.css
-            `- index.html
-
- * The `app/` directory stores the public application files.
-    * `app/core` holds the core framework
-    * `main.js` bootstraps the application
-    * `script.js` Additional scripts
-    * `style.css` Additional styles
-    * `index.html` Main app structure
- 
-* Every module is self contained and stored under `app/modules`
-    * `app/modules/index.js` holds the modules url mapping
-    * `app/modules/models.js` defines the shared Data Models used by 
-    the application.
-
-Modules are framework-agnostic. The architecture, provided by 
-BoilerplateJS, demonstrates the best practices for integrating your 
-libraries for large scale product development. 
-
-You can add additional modules to your application using the `module`
-subgenerator
-
-    yo metaproject:module name
-
-Creates a default module with separate `viewmodel.js` and submodule 
-support.
-
-    yo metaproject:module name --simple
-
-Creates a simple module with inline `viewModel` and a single endpoint.
 
 ## The base module
 
@@ -189,12 +146,11 @@ Product model and bind it to a REST endpoint. The generator will
 build the boilerplate code for listing and editing each resource.
 
 To test this module, you'll need a configured apache webserver with a 
-local Objectiveweb installation.
+local Objectiveweb installation. For a quick overview on the
+setup, please visit 
+[bravado/objectiveweb](https://github.com/bravado/objectiveweb)
 
 ### Backend Setup
-
-We'll use `objectiveweb` as the backend. For a quick overview on the
-setup, please visit https://github.com/bravado/objectiveweb
 
 First, create the `product` database table
     
@@ -236,7 +192,7 @@ Edit `app/modules/models.js` and add the following Model definition
         description: null
     }).bind('../objectiveweb/product');
 
-Then, on your terminal run 
+Then, on your project root, run 
 `yo metaproject:crud products Product --menu` to build the `products` 
 module using the `Product` model and add it to the sidebar menu
 
